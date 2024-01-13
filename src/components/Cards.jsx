@@ -1,21 +1,22 @@
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Text, Image, ButtonGroup, Button } from '@chakra-ui/react'
 
-const Cards = () => {
+const Cards = (data) => {
+    console.log(data);
     return (
         <div><Card maxW='sm'>
             <CardBody>
                 <Image
-                    src={image}
+                    src={data.data.image}
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
                 />
                 <Stack mt='6' spacing='3'>
-                    <Heading size='md'>{title}</Heading>
+                    <Heading size='md'>{data.data.title}</Heading>
                     <Text>
-                        {description}
+                        {data.data.description}
                     </Text>
                     <Text color='white' fontSize='2xl'>
-                        {price}
+                        GHC {data.data.price}
                     </Text>
                 </Stack>
             </CardBody>
