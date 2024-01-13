@@ -1,12 +1,13 @@
 import { Button, ButtonGroup } from '@chakra-ui/react'
-
+import Cards from './components/Cards'
 
 function App() {
 
 
   return (
     <>
-      <Button colorScheme='blue'>Button</Button>
+      <Cards />
+
     </>
   )
 }
