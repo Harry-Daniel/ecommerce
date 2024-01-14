@@ -10,7 +10,7 @@ const CardContainer = () => {
     console.log(data)
 
     return (
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5} marginTop='175px' >
 
             {
                 data.map(
