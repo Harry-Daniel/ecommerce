@@ -3,6 +3,7 @@ import Cards from './components/Cards'
 import CardContainer from './components/CardContainer'
 import NavBar from './components/NavBar'
 
+
 function App() {
 
 
@@ -10,6 +11,7 @@ function App() {
     <>
       <NavBar />
       <CardContainer />
+
 
     </>
   )

@@ -21,8 +21,10 @@ const NavBar = () => {
                                 <ListItem>Cart</ListItem>
                                 <ListItem></ListItem>
                                 <ListItem></ListItem>
-
                                 <ListItem>Contact</ListItem>
+                                <ListItem></ListItem>
+                                <ListItem></ListItem>
+                                <ListItem>Profile</ListItem>
                             </HStack>
                         </List>
                     </div>
