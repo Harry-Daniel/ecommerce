@@ -1,6 +1,7 @@
 import { Box, HStack, Image, List, ListItem } from '@chakra-ui/react'
 import logo from '../assets/MSH.png'
 import { GrCart } from "react-icons/gr"
+import Counter from '../counter/Counter'
 const NavBar = () => {
     return (
         <>
@@ -17,11 +18,16 @@ const NavBar = () => {
                     <div>
                         <List spacing={19}>
                             <HStack className='list-unstyled' >
-                                <GrCart color='green' />
-                                <ListItem>Cart</ListItem>
-                                <ListItem></ListItem>
-                                <ListItem></ListItem>
+
                                 <ListItem>Contact</ListItem>
+                                <ListItem></ListItem>
+                                <ListItem></ListItem>
+
+                                <HStack padding={0} margin={0}>
+                                    <GrCart color='green' />
+                                    <Counter />
+                                </HStack>
+                                <ListItem>Order(s)</ListItem>
                                 <ListItem></ListItem>
                                 <ListItem></ListItem>
                                 <ListItem>Profile</ListItem>

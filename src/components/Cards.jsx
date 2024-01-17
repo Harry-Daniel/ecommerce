@@ -28,9 +28,7 @@ const Cards = (data) => {
                 <CardFooter>
                     <ButtonGroup spacing='2'>
                         <PopModal data={data} />
-                        <Button variant='ghost' colorScheme='blue'>
-                            Add to cart
-                        </Button>
+
                     </ButtonGroup>
                 </CardFooter>
             </Card></div>

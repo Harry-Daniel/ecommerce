@@ -8,18 +8,27 @@ import {
     ModalCloseButton,
     useDisclosure,
     Button,
-    Input
+    Input,
+    useCounter
 
 } from '@chakra-ui/react'
 import ModalCards from './ModalCards'
+import useCounterStore from '../counter/store'
 
 const PopModal = (data) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { increment, reset } = useCounterStore();
+
+    const handleClick = () => {
+
+        onClose();
+        increment();
+    }
 
     return (
         <>
             <Button onClick={onOpen} variant='solid' colorScheme='blue'>
-                Buy now
+                Create Order
             </Button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -28,7 +37,7 @@ const PopModal = (data) => {
                     <ModalCards data={data} />
 
                     <Input type='number' placeholder='quantity' marginRight={3} />
-                    <Button onClick={onClose} colorScheme='blue'>Buy</Button>
+                    <Button onClick={handleClick} colorScheme='blue'>Add to Cart</Button>
                 </ModalContent>
             </Modal>
 
