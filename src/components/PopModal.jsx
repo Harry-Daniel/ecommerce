@@ -14,15 +14,20 @@ import {
 } from '@chakra-ui/react'
 import ModalCards from './ModalCards'
 import useCounterStore from '../counter/store'
+import { useState } from 'react'
 
 const PopModal = (data) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { increment, reset } = useCounterStore();
+    const [quantity, setQuantity] = useState(false);
+    console.log(quantity);
+
 
     const handleClick = () => {
 
         onClose();
         increment();
+        setQuantity(false);
     }
 
     return (
@@ -36,8 +41,8 @@ const PopModal = (data) => {
 
                     <ModalCards data={data} />
 
-                    <Input type='number' placeholder='quantity' marginRight={3} />
-                    <Button onClick={handleClick} colorScheme='blue'>Add to Cart</Button>
+                    <Input type='number' placeholder='quantity' onChange={() => setQuantity(true)} marginRight={3} />
+                    {quantity && <Button onClick={handleClick} colorScheme='blue'>Add to Cart</Button>}
                 </ModalContent>
             </Modal>
 
