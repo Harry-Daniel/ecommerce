@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Button, Image, Text, Input } from '@chakra-ui/react'
 
 const ModalCards = (data, onClose) => {
-    console.log(data)
+
     const dataAccess = data.data.data.data;
     return (
         <div><Card

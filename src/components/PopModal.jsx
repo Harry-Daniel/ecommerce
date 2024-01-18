@@ -15,25 +15,28 @@ import {
 import ModalCards from './ModalCards'
 import useCounterStore from '../counter/store'
 import { useState } from 'react'
+import useProductStore from '../store/store'
 
 const PopModal = (data) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { increment, reset } = useCounterStore();
     const [quantity, setQuantity] = useState(false);
-    console.log(quantity);
+    const [quantityAmount, setQuantityAmount] = useState(0);
+    const { addToCart } = useProductStore();
 
 
     const handleClick = () => {
 
         onClose();
         increment();
+        addToCart({ ...data, quantity: quantityAmount });
         setQuantity(false);
     }
 
     return (
         <>
             <Button onClick={onOpen} variant='solid' colorScheme='blue'>
-                Create Order
+                Place Order
             </Button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -41,7 +44,10 @@ const PopModal = (data) => {
 
                     <ModalCards data={data} />
 
-                    <Input type='number' placeholder='quantity' onChange={() => setQuantity(true)} marginRight={3} />
+                    <Input type='number' placeholder='quantity (Only Numbers are allowed)' onChange={(e) => {
+                        setQuantity(true)
+                        setQuantityAmount(e.target.value)
+                    }} marginRight={3} />
                     {quantity && <Button onClick={handleClick} colorScheme='blue'>Add to Cart</Button>}
                 </ModalContent>
             </Modal>
