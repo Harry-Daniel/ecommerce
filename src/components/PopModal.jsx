@@ -22,13 +22,15 @@ const PopModal = (data) => {
     const { increment, reset } = useCounterStore();
     const [quantity, setQuantity] = useState(false);
     const [quantityAmount, setQuantityAmount] = useState(0);
-    const { addToCart } = useProductStore();
+    const { cart, addToCart, totaling, total } = useProductStore();
 
 
+    const dataAccess = data.data.data;
     const handleClick = () => {
 
         onClose();
         increment();
+        totaling(dataAccess.price * quantityAmount)
         addToCart({ ...data, quantity: quantityAmount });
         setQuantity(false);
     }

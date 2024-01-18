@@ -1,9 +1,11 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Button, Heading, Text, Box, HStack } from '@chakra-ui/react'
+import useProductStore from './store';
 
 const ProductCard = (data) => {
-    console.log(data);
+
     const dataAccess = data.data.data.data;
+
     return (
         <>
             <Card
@@ -26,7 +28,7 @@ const ProductCard = (data) => {
                             {dataAccess.description}
                         </Text>
 
-                        <Box as='text' borderRadius='md' bg='tomato' color='white' padding={1} >
+                        <Box as='Text' borderRadius='md' bg='tomato' color='white' padding={1} >
                             Quantity Ordered: {data.data.quantity}
                         </Box>
                     </CardBody>

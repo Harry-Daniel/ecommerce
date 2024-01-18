@@ -5,6 +5,7 @@ import Cards from "../components/Cards";
 import ProductCard from "./ProductCard";
 
 const ProductStore = () => {
+  const { total } = useProductStore();
   const { cart } = useProductStore();
 
   if (cart.length === 0) return null
@@ -15,7 +16,7 @@ const ProductStore = () => {
       )}
 
       <HStack padding={5} justify={'center'} >
-        <Text marginRight={7}>Total</Text>
+        <Text marginRight={7}>Total: {total}</Text>
         <Button colorScheme="blue">Confirm</Button>
       </HStack>
 
