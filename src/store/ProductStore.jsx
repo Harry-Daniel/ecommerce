@@ -1,5 +1,5 @@
 
-import { Text, HStack, Button } from "@chakra-ui/react";
+import { Text, HStack, Button, Box } from "@chakra-ui/react";
 import useProductStore from "./store";
 import Cards from "../components/Cards";
 import ProductCard from "./ProductCard";
@@ -16,8 +16,10 @@ const ProductStore = () => {
       )}
 
       <HStack padding={5} justify={'center'} >
-        <Text marginRight={7}>Total: {total}</Text>
-        <Button colorScheme="blue">Confirm</Button>
+        <Box as='Text' borderRadius='md' bg='green' color='white' padding={3} fontSize={17} >
+          Total= GHC {total}
+        </Box>
+        <Button colorScheme="blue">Order</Button>
       </HStack>
 
     </div>
