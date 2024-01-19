@@ -3,8 +3,13 @@ import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Button, Heading, 
 import useProductStore from './store';
 
 const ProductCard = (data) => {
-
+    const { removeFromCart, totaling } = useProductStore();
     const dataAccess = data.data.data.data;
+
+    const handleClick = () => {
+        totaling(-(data.data.quantity * dataAccess.price));
+        removeFromCart(dataAccess.id);
+    }
 
     return (
         <>
@@ -37,9 +42,12 @@ const ProductCard = (data) => {
                         <Text color='white' fontSize='2xl'>
                             Total: GHC {data.data.quantity * dataAccess.price}
                         </Text>
+                        <Button marginLeft={5} colorScheme='blue' onClick={() => { handleClick() }}>Remove Item</Button>
+
                     </CardFooter>
+
                 </Stack>
-            </Card>
+            </Card >
 
 
         </>
