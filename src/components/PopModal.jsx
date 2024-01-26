@@ -9,13 +9,15 @@ import {
     useDisclosure,
     Button,
     Input,
-    useCounter
+    useCounter,
+    useToast
 
 } from '@chakra-ui/react'
 import ModalCards from './ModalCards'
 import useCounterStore from '../counter/store'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useProductStore from '../store/store'
+
 
 const PopModal = (data) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,20 +25,40 @@ const PopModal = (data) => {
     const [quantity, setQuantity] = useState(false);
     const [quantityAmount, setQuantityAmount] = useState(0);
     const { cart, addToCart, totaling, total } = useProductStore();
+    const toast = useToast();
+
+    const dataAccess = data?.data?.data;
+
+    const AddSuccess = () => toast({
+        title: 'Product Added.',
+        description: "Your product has been added to cart. Use the Navigaion Bar to access your Cart.",
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+    })
 
 
-    const dataAccess = data.data.data;
-    const handleClick = () => {
 
-        onClose();
+
+
+
+
+    const handleAddToCart = () => {
+
+
         increment();
-        totaling(dataAccess.price * quantityAmount)
+        totaling(dataAccess.price * quantityAmount);
         addToCart({ ...data, quantity: quantityAmount });
         setQuantity(false);
+        AddSuccess()
+        onClose()
     }
+
 
     return (
         <>
+
+
             <Button onClick={onOpen} variant='solid' colorScheme='blue'>
                 Place Order
             </Button>
@@ -50,9 +72,10 @@ const PopModal = (data) => {
                         setQuantity(true)
                         setQuantityAmount(e.target.value)
                     }} marginRight={3} />
-                    {quantity && <Button onClick={handleClick} colorScheme='blue'>Add to Cart</Button>}
+                    {quantity && <Button onClick={handleAddToCart} colorScheme='blue'>Add to Cart</Button>}
                 </ModalContent>
             </Modal>
+
 
         </>
     )

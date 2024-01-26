@@ -4,6 +4,7 @@ import { GrCart } from "react-icons/gr"
 import Counter from '../counter/Counter'
 import { Link } from 'react-router-dom'
 import useCounterStore from '../counter/store'
+
 const NavBar = () => {
     const { counter } = useCounterStore()
     return (
@@ -29,14 +30,16 @@ const NavBar = () => {
                                 <ListItem></ListItem>
                                 <HStack padding={0} margin={0}>
                                     <Link to='/orders'>
-                                        {counter !== 0 && <GrCart color='green' />}
+                                        <Counter />
                                     </Link>
                                     <Link to='/orders'>
-                                        <Counter />
+                                        {counter !== 0 && <GrCart color='green' />}
                                     </Link>
 
                                 </HStack>
-                                <ListItem></ListItem>
+                                <Link to='/orders'>
+                                    {counter !== 0 && <ListItem color='green'>Cart</ListItem>}
+                                </Link>
                                 <ListItem></ListItem>
                                 <ListItem>Profile</ListItem>
                             </HStack>

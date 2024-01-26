@@ -4,9 +4,10 @@ import useProductStore from './store';
 import useCounterStore from '../counter/store';
 
 const ProductCard = (data) => {
-    const { removeFromCart, totaling } = useProductStore();
+    const { removeFromCart, totaling, total } = useProductStore();
     const { decrease } = useCounterStore();
-    const dataAccess = data.data.data.data;
+    const dataAccess = data?.data?.data?.data;
+
 
     const handleClick = () => {
         totaling(-(data.data.quantity * dataAccess.price));
